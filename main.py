@@ -1,10 +1,15 @@
+import nltk
+import numpy
 from os import listdir
 from os.path import isfile, join
+from nltk.tokenize import word_tokenize
+from nltk import ne_chunk
 
 mapFiles = {}
 madHeaders = {}
 mapContent = {}
 mapTags = {}
+
 
 def readContents():
 
@@ -20,9 +25,10 @@ def readContents():
 
         mapFiles[fileName] = fileContent
 
-    for content in mapFiles:
 
-        print(mapFiles[content])
+    print(mapFiles['wsj_0017.txt'])
+    print(word_tokenize(mapFiles['wsj_0017.txt']))
+    print(ne_chunk(nltk.pos_tag(word_tokenize(mapFiles['wsj_0017.txt'])), binary=False))
 
 readContents()
 
