@@ -1,6 +1,7 @@
 import nltk
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
+import os
 from os import listdir
 from os.path import isfile, join
 import re
@@ -10,6 +11,11 @@ files = {}
 headers = {}
 contents = {}
 tagged = {}
+speakers_headers = {}
+speakers_contents = {}
+locations_headers = {}
+locations_contents = {}
+
 
 # Read files contents
 def read():
@@ -23,56 +29,141 @@ def read():
         content = file.read()
         files[file_name] = content
 
+
 # Check is text is a sentence
-def isSentence(text):
-    tagged = nltk.pos_tag(text.split())
+def is_sentence(sentence):
+    # if text[0] < 'A' or text[0] > 'Z':
+    #     return False
+
+    if sentence.strip() != '':
+        if sentence.strip()[0] == '-' or sentence.strip()[0] == '*' or sentence.strip()[0] == '~':
+            return False
+    for something in ['type:', 'who:', 'topic:', 'dates:', 'time:', 'place:', 'duration:', 'host:', 'when:', 'where:',
+                      'speaker:', 'title:']:
+        if something in sentence.lower():
+            return False
+    tagged = nltk.pos_tag(sentence.split())
     for tag in tagged:
-        if 'VB' in tag[1]:
+        if 'V' in tag[1]:
             return True
     return False
 
+
 # Check if text is a paragraph
-def isParagraph(paragraph):
+def is_paragraph(paragraph):
+    if paragraph.strip() != '':
+        if paragraph.strip()[0] == '-' or paragraph.strip()[0] == '*' or paragraph.strip()[0] == '~':
+            return False
+    for something in ['type:', 'who:', 'topic:', 'dates:', 'time:', 'place:', 'duration:', 'host:', 'when:', 'where:',
+                      'speaker:', 'title:']:
+        if something in paragraph.lower():
+            return False
     if '<sentence>' in paragraph:
         return True
     return False
 
+
 # Tag a sentence
-def tagSent(sentence):
+def tag_sent(sentence):
     return '<sentence>' + sentence[0 : len(sentence) - 1] + '</sentence>' + '.'
 
-# Tag a paragraph
-def tagPar(paragraph):
-    return '<paragraph>' + paragraph + '</paragraph>'
 
 # Tag a paragraph
-def tagParagraph(paragraph):
+def tag_par(paragraph):
+    return '<paragraph>' + paragraph + '</paragraph>'
+
+
+# Tag speaker
+def tag_spk(speaker):
+    return '<speaker>' + speaker + '</speaker>'
+
+
+# Tag location
+def tag_loc(location):
+    return '<location>' + location + '</location>'
+
+
+# Tag speaker and location in header
+def tag_speaker_location_header():
+    for header in headers:
+        speaker = re.search('Who:(.*)', headers[header])
+        location = re.search('Place:(.*)', headers[header])
+        if speaker is not None:
+            line = speaker.group(1).strip()
+            line2 = re.split(':|,|/|-|\(', line)
+            name = line2[0]
+            speakers_headers[header] = name
+
+            headers[header] = headers[header].replace(name, tag_spk(name))
+            if name in tagged[header]:
+                tagged[header] = tagged[header].replace(name, tag_spk(name))
+
+        if location is not None:
+            line = location.group(1).strip()
+            line2 = re.split(':|,|/|-|\(', line)
+            loc = line2[0]
+            locations_headers[header] = loc
+
+            headers[header] = headers[header].replace(loc, tag_loc(loc))
+            if loc in tagged[header]:
+                tagged[header] = tagged[header].replace(loc, tag_loc(loc))
+
+
+# Tag speaker and locationin content
+def tag_speaker_location_content():
+    for content in contents:
+        if '<speaker>' not in tagged[content]:
+            speaker = re.search('WHO:(.*)|SPEAKER:(.*)', contents[content])
+            if speaker is not None:
+                line = speaker.group(0).strip()
+                line2 = re.split(':|,|/|-|\(', line)
+                name = line2[1].strip()
+                speakers_contents[content] = name
+
+                contents[content] = contents[content].replace(name, tag_spk(name))
+                if name in tagged[content]:
+                    tagged[content] = tagged[content].replace(name, tag_spk(name))
+
+        if '<location>' not in tagged[content]:
+            location = re.search('WHERE:(.*)', contents[content])
+            if location is not None:
+                line = location.group(0).strip()
+                line2 = re.split(':|,|/|-|\(', line)
+                loc = line2[1].strip()
+                locations_contents[content] = loc
+
+                contents[content] = contents[content].replace(loc, tag_loc(loc))
+                if loc in tagged[content]:
+                    tagged[content] = tagged[content].replace(loc, tag_loc(loc))
+
+
+# Tag a paragraph
+def tag_paragraph(paragraph):
     sentences = nltk.sent_tokenize(paragraph)
     tagged = ''
     for sentence in sentences:
-        if 'where:' not in sentence.lower() and 'when:' not in sentence.lower() and 'speaker:' not in sentence.lower() and 'title' not in sentence.lower():
-            if isSentence(sentence):
-                paragraph = paragraph.replace(sentence, tagSent(sentence))
-                tagged = tagged + tagSent(sentence)
-            else:
-                tagged = tagged + sentence
+        if is_sentence(sentence):
+            paragraph = paragraph.replace(sentence, tag_sent(sentence))
+            tagged = tagged + tag_sent(sentence)
         else:
             tagged = tagged + sentence
 
-    if(isParagraph(tagged)):
-        paragraph = paragraph.replace(paragraph, tagPar(paragraph))
+    if is_paragraph(tagged):
+        paragraph = paragraph.replace(paragraph, tag_par(paragraph))
 
     return paragraph
 
+
 # Tag all paragraphs in a text
-def tagParagraphs(text):
+def tag_paragraphs(text):
     paragraphs = text.split('\n\n')
-    for i in range (0, len(paragraphs) - 1):
-        text = text.replace(paragraphs[i], tagParagraph(paragraphs[i]), 1)
+    for i in range (0, len(paragraphs)):
+        text = text.replace(paragraphs[i], tag_paragraph(paragraphs[i]), 1)
     return text
 
+
 # Tag start time and end time
-def tagTime(text):
+def tag_time(text):
 
     time_format = re.compile(r'\b((0?[1-9]|1[012])([:][0-5][0-9])?(\s?[apAP][Mm])|([01]?[0-9]|2[0-3])([:][0-5][0-9]))\b')
     times = time_format.findall(text)
@@ -85,7 +176,9 @@ def tagTime(text):
 
     return text
 
-def tagTimeHeader(text):
+
+# Tag time in header
+def tag_time_header(text):
     time = 'time'
     posted = text.lower().find("postedby")
     time_header = text.lower().find(time)
@@ -95,30 +188,11 @@ def tagTimeHeader(text):
         else:
             toreplace = text[time_header:]
 
-        text = text.replace(toreplace, tagTime(toreplace))
+        text = text.replace(toreplace, tag_time(toreplace))
     return text
 
-# Tag speaker in text
-# def tagSpeaker(text):
-#     stanfordClassifier = '/Users/ioanateju/nltk_data/taggers/stanford-ner-2018-10-16/classifiers/english.muc.7class.distsim.crf.ser.gz'
-#     stanfordNerPath = '/Users/ioanateju/nltk_data/taggers/stanford-ner-2018-10-16/stanford-ner.jar'
-#     st = StanfordNERTagger(stanfordClassifier, stanfordNerPath, encoding='utf8')
-#     result = st.tag(word_tokenize(text))
-#     res = []
-#     for r in result:
-#         if r[1] == "PERSON":
-#             res.append(r[0])
-#
-#     if len(res) > 1:
-#         tagged = "<speaker>" + res[0] + " " + res[1] + "</speaker>"
-#         text = text.replace(res[0] + " " + res[1], tagged)
-#     else:
-#         if len(res) > 0:
-#             tagged = "<speaker>" + res[0] + "</speaker>"
-#             text = text.replace(res[0] + res[1], tagged)
-#
-#     return text
 
+# Map headers, contents and tagged files
 def map():
     for file in files:
         f = files[file]
@@ -128,7 +202,22 @@ def map():
             text = temp[1]
             headers[file] = header
             contents[file] = text
-            tagged[file] = tagTimeHeader(headers[file]) + '\n Abstract:' + tagTime(tagParagraphs(contents[file]))
+            tagged[file] = tag_time_header(headers[file]) + '\n Abstract:' + tag_time(tag_paragraphs(contents[file]))
+
+    tag_speaker_location_header()
+    tag_speaker_location_content()
+
+
+# Write tagged files
+def write():
+    for tag in tagged:
+        file_name = 'tagged/' + tag + '_tagged'
+        if os.path.exists(file_name):
+            os.remove(file_name)
+        file = open(file_name, 'w')
+        file.write(tagged[tag])
+        file.close()
+
 
 # main
 if __name__ == '__main__':
@@ -139,4 +228,5 @@ if __name__ == '__main__':
     # Map files
     map()
 
-    print(tagged['303.txt'])
+    # Write files
+    write()
