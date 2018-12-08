@@ -32,9 +32,6 @@ def read():
 
 # Check is text is a sentence
 def is_sentence(sentence):
-    # if text[0] < 'A' or text[0] > 'Z':
-    #     return False
-
     if sentence.strip() != '':
         if sentence.strip()[0] == '-' or sentence.strip()[0] == '*' or sentence.strip()[0] == '~':
             return False
@@ -55,7 +52,7 @@ def is_paragraph(paragraph):
         if paragraph.strip()[0] == '-' or paragraph.strip()[0] == '*' or paragraph.strip()[0] == '~':
             return False
     for something in ['type:', 'who:', 'topic:', 'dates:', 'time:', 'place:', 'duration:', 'host:', 'when:', 'where:',
-                      'speaker:', 'title:']:
+                      'speaker:', 'title:', 'furtherdetails']:
         if something in paragraph.lower():
             return False
     if '<sentence>' in paragraph:
@@ -164,8 +161,7 @@ def tag_paragraphs(text):
 
 # Tag start time and end time
 def tag_time(text):
-
-    time_format = re.compile(r'\b((0?[1-9]|1[012])([:][0-5][0-9])?(\s?[apAP][Mm])|([01]?[0-9]|2[0-3])([:][0-5][0-9]))\b')
+    time_format = re.compile(r'\b((0?[1-9]|1[012])([:][0-5][0-9])?(\s?[apAP][.]?[Mm])|([01]?[0-9]|2[0-3])([:][0-5][0-9]))\b')
     times = time_format.findall(text)
     if len(times) > 0:
         time1 = '<stime>' + times[0][0] + '</stime>'
@@ -202,7 +198,7 @@ def map():
             text = temp[1]
             headers[file] = header
             contents[file] = text
-            tagged[file] = tag_time_header(headers[file]) + '\n Abstract:' + tag_time(tag_paragraphs(contents[file]))
+            tagged[file] = tag_time_header(headers[file]) + '\nAbstract:' + tag_time(tag_paragraphs(contents[file]))
 
     tag_speaker_location_header()
     tag_speaker_location_content()
@@ -211,7 +207,7 @@ def map():
 # Write tagged files
 def write():
     for tag in tagged:
-        file_name = 'tagged/' + tag + '_tagged'
+        file_name = 'tagged/' + tag
         if os.path.exists(file_name):
             os.remove(file_name)
         file = open(file_name, 'w')
