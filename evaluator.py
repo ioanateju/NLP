@@ -10,6 +10,7 @@ def read_file_names():
     filenames = [f for f in listdir(path) if isfile(join(path, f))]
     return filenames
 
+
 def w_tags(text):
     tag = re.compile('<.?>')
     w_tag = re.sub(tag, '', text)
@@ -89,6 +90,11 @@ if __name__ == '__main__':
                 else:
                     tagged_tag = untagged(tagged_file, tag)
                     test_tag = untagged(test_file, tag)
+
+            # if tag == 'location':
+            #     print(file)
+            #     print (tagged_tag)
+            #     print(test_tag)
 
             true_pos, false_pos, false_neg = values(tagged_tag, test_tag)
             true_positives += true_pos
