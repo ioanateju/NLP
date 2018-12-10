@@ -14,10 +14,8 @@ headers = {}
 contents = {}
 tagged = {}
 topics = {}
-speakers_headers = {}
-speakers_contents = {}
-locations_headers = {}
-locations_contents = {}
+all_speakers = []
+all_locations = []
 all_topics = []
 selected_topics = []
 stemmed_topics = []
@@ -37,7 +35,7 @@ def read():
         files[file_name] = content
 
 
-# Check is text is a sentence
+# Check if text is a sentence
 def is_sentence(sentence):
     if sentence.strip() != '':
         if sentence.strip()[0] == '-' or sentence.strip()[0] == '*' or sentence.strip()[0] == '~':
@@ -96,21 +94,29 @@ def tag_speaker_location_header():
             line = speaker.group(1).strip()
             line2 = re.split(':|,|/|-|\(', line)
             name = line2[0]
-            speakers_headers[header] = name
+            all_speakers.append(name)
 
             headers[header] = headers[header].replace(name, tag_spk(name))
             if name in tagged[header]:
                 tagged[header] = tagged[header].replace(name, tag_spk(name))
+        # else:
+        #     for speaker in all_speakers:
+        #         if speaker in tagged[header]:
+        #             tagged[header] = tagged[header].replace(speaker, tag_spk(speaker))
 
         if location is not None:
             line = location.group(1).strip()
             line2 = re.split(':|,|/|-|\(', line)
             loc = line2[0]
-            locations_headers[header] = loc
+            all_locations.append(loc)
 
             headers[header] = headers[header].replace(loc, tag_loc(loc))
             if loc in tagged[header]:
                 tagged[header] = tagged[header].replace(loc, tag_loc(loc))
+        # else:
+        #     for location in all_locations:
+        #         if location in headers[header]:
+        #             tagged[header] = tagged[header].replace(location, tag_loc(location))
 
 
 # Tag speaker and locationin content
@@ -122,11 +128,14 @@ def tag_speaker_location_content():
                 line = speaker.group(0).strip()
                 line2 = re.split(':|,|/|-|\(', line)
                 name = line2[1].strip()
-                speakers_contents[content] = name
 
                 contents[content] = contents[content].replace(name, tag_spk(name))
                 if name in tagged[content]:
                     tagged[content] = tagged[content].replace(name, tag_spk(name))
+            # else:
+            #     for speaker in all_speakers:
+            #         if speaker in tagged[content]:
+            #             tagged[content] = tagged[content].replace(speaker, tag_spk(speaker))
 
         if '<location>' not in tagged[content]:
             location = re.search('WHERE:(.*)', contents[content])
@@ -134,11 +143,16 @@ def tag_speaker_location_content():
                 line = location.group(0).strip()
                 line2 = re.split(':|,|/|-|\(', line)
                 loc = line2[1].strip()
-                locations_contents[content] = loc
+                all_locations.append(loc)
 
                 contents[content] = contents[content].replace(loc, tag_loc(loc))
                 if loc in tagged[content]:
                     tagged[content] = tagged[content].replace(loc, tag_loc(loc))
+
+            # else:
+            #     for location in all_locations:
+            #         if location in tagged[content]:
+            #             tagged[content] = tagged[content].replace(location, tag_loc(location))
 
 
 # Tag a paragraph
@@ -283,7 +297,7 @@ def read_topics():
 
 
 # Stem and lemmatize all words in selected topics
-def stem_lemm():
+def stem():
     read_topics()
     for word in selected_topics:
         stemmer = PorterStemmer()
@@ -305,7 +319,7 @@ def ontology(subj):
         tree['Science'][subject] = {}
 
     tree['Science']['Computer Science'] = {'Logic' : [], 'PSC' : [], 'Algorithms' : [], 'Graphics' : [],
-                                           'Mathematics for CS' : [], 'Automatisation' : [], 'Computer Design' : [],
+                                           'Mathematics for CS' : [], 'Automation' : [], 'Computer Design' : [],
                                            'Systems' : [], 'Computational Vision' : [], 'Robotics' : [], 'ECE' : [],
                                            'SCS' : [], 'AI' : [], 'HCI' : [], 'RI' : [], 'IC' : [], 'NLP' : []}
 
@@ -322,7 +336,7 @@ def ontology(subj):
     keys['Algorithms'] = ['algorithm']
     keys['Graphics'] =  ['graphics', 'three-dimension', 'two-dimension', '3d']
     keys['Mathematics for CS'] = ['mathemat', 'geometr', 'arithmet']
-    keys['Automatisation'] = ['autonom', 'autom']
+    keys['Automation'] = ['autonom', 'autom']
     keys['Computer Design'] = ['design']
     keys['Systems'] = ['system']
     keys['Computational Vision'] = ['color', 'visual', 'imag', 'vision']
@@ -336,25 +350,41 @@ def ontology(subj):
     keys['NLP'] = ['languag', 'pars']
 
     for file in files:
-        if 'Type:' in files[file]:
-            type = re.search('Type:(.*)', headers[file])
-            if type is not None:
-                line = type.group(1).strip()
-                if 'scs' in line:
-                    tree['Science']['Computer Science']['SCS'].append(file)
-                else:
-                    if 'robotics' in line:
-                        tree['Science']['Computer Science']['Robotics'].append(file)
-        if 'Topic:' in files[file]:
-            topic = re.search('Topic:(.*)', files[file])
-            if topic is not None:
-                line = topic.group(1).strip()
-                for key in keys:
-                    for keyword in keys[key]:
-                        if keyword in line.lower():
+        is_cs = False
+        for key in keys:
+            for keyword in keys[key]:
+                if keyword in files[file].lower():
+                    is_cs = True
+
+        if is_cs == True:
+            if 'Type:' in files[file]:
+                type = re.search('Type:(.*)', headers[file])
+                if type is not None:
+                    line = type.group(1).strip()
+                    if 'scs' in line:
+                        tree['Science']['Computer Science']['SCS'].append(file)
+                    else:
+                        if 'robotics' in line:
+                            tree['Science']['Computer Science']['Robotics'].append(file)
+
+            if 'Topic:' in files[file]:
+                topic = re.search('Topic:(.*)', files[file])
+                if topic is not None:
+                    line = topic.group(1).strip()
+                    for key in keys:
+                        for keyword in keys[key]:
+                            if keyword in line.lower():
+                                if file not in tree['Science']['Computer Science'][key]:
+                                    tree['Science']['Computer Science'][key].append(file)
+                    if 'AI' in line:
+                        if file not in tree['Science']['Computer Science'][key]:
+                            tree['Science']['Computer Science']['AI'].append(file)
+
+            for key in keys:
+                for keyword in keys[key]:
+                    if keyword in contents[file].lower():
+                        if file not in tree['Science']['Computer Science'][key]:
                             tree['Science']['Computer Science'][key].append(file)
-                if 'AI' in line:
-                    tree['Science']['Computer Science']['AI'].append(file)
 
     exists = False
     if subj in tree:
@@ -389,3 +419,4 @@ if __name__ == '__main__':
         ontology(subject)
         print()
         subject = input('What subject are you looking for? Type exit if you want to exit. \n')
+

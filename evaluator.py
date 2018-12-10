@@ -91,11 +91,6 @@ if __name__ == '__main__':
                     tagged_tag = untagged(tagged_file, tag)
                     test_tag = untagged(test_file, tag)
 
-            # if tag == 'location':
-            #     print(file)
-            #     print (tagged_tag)
-            #     print(test_tag)
-
             true_pos, false_pos, false_neg = values(tagged_tag, test_tag)
             true_positives += true_pos
             false_positives += false_pos

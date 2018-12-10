@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54396cd4-23e4-4058-8e7e-86877e2d8636" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CS Topics" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untagged/485.txt" beforeDir="false" afterPath="$PROJECT_DIR$/untagged/485.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,9 +15,9 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/NLP$newest.coverage" NAME="newest Coverage Results" MODIFIED="1544117772855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/NLP$main.coverage" NAME="main Coverage Results" MODIFIED="1544401596279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NLP$main.coverage" NAME="main Coverage Results" MODIFIED="1544460171054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NLP$ceva.coverage" NAME="ceva Coverage Results" MODIFIED="1543863060126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/NLP$evaluator__1_.coverage" NAME="evaluator (1) Coverage Results" MODIFIED="1544378186423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NLP$evaluator__1_.coverage" NAME="evaluator (1) Coverage Results" MODIFIED="1544460407830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NLP$mainm.coverage" NAME="mainm Coverage Results" MODIFIED="1544133429907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NLP$andreea.coverage" NAME="andreea Coverage Results" MODIFIED="1544031179257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NLP$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1544016763667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -28,24 +28,25 @@
     <session id="-68188530">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="4" />
-          <entry key="project.open.time.6" value="3" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.open.time.6" value="4" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="All Topics" value="5" />
+          <entry key="All Topics" value="6" />
+          <entry key="CS Topics" value="1" />
           <entry key="README" value="1" />
-          <entry key="Selected Topics" value="2" />
+          <entry key="Selected Topics" value="3" />
           <entry key="male" value="1" />
           <entry key="map" value="1" />
-          <entry key="py" value="40" />
-          <entry key="txt" value="272" />
+          <entry key="py" value="41" />
+          <entry key="txt" value="275" />
           <entry key="txt_tagged" value="49" />
           <entry key="txttagged" value="1" />
           <entry key="xsl" value="1" />
@@ -53,8 +54,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="332" />
-          <entry key="Python" value="40" />
+          <entry key="PLAIN_TEXT" value="338" />
+          <entry key="Python" value="41" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -64,14 +65,14 @@
           <entry key="Python Console" value="121" />
           <entry key="Selected Topics" value="43" />
           <entry key="dummy" value="55" />
-          <entry key="py" value="32413" />
-          <entry key="txt" value="251" />
+          <entry key="py" value="33694" />
+          <entry key="txt" value="300" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="351" />
-          <entry key="Python" value="32531" />
+          <entry key="PLAIN_TEXT" value="400" />
+          <entry key="Python" value="33812" />
           <entry key="RegExp" value="3" />
         </counts>
       </usages-collector>
@@ -82,40 +83,44 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5880">
-              <caret line="392" column="68" selection-start-line="392" selection-start-column="68" selection-end-line="392" selection-end-column="68" />
+            <state relative-caret-position="892">
+              <caret line="380" column="28" selection-start-line="380" selection-start-column="28" selection-end-line="380" selection-end-column="28" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1544401413113" expanded="true" signature="518:523" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="1261:1266" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="2338:2339" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="2437:2442" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="3404:4546" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="4544:4546" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="4593:5016" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="5074:5246" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="6154:6155" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="6878:6967" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="7767:7977" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="8109:8110" ph="..." />
-                <marker date="1544401413113" expanded="true" signature="8638:11879" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="461:466" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="1204:1209" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="2281:2282" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="2380:2385" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="3733:5253" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="5251:5253" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="5300:5723" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="5781:5953" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="6861:6862" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="7585:7674" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="8474:8684" ph="..." />
+                <marker date="1544460107388" expanded="true" signature="8816:8817" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_tagged/331.txt">
+        <entry file="file://$PROJECT_DIR$/CS Topics">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-244" />
+            <state relative-caret-position="30">
+              <caret line="2" column="91" selection-start-line="2" selection-start-column="91" selection-end-line="2" selection-end-column="91" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Selected Topics">
+        <entry file="file://$PROJECT_DIR$/evaluator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="6" />
+            <state relative-caret-position="-460">
+              <caret line="91" column="55" selection-start-line="91" selection-start-column="55" selection-end-line="91" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,9 +154,10 @@
         <option value="$PROJECT_DIR$/eval.py" />
         <option value="$PROJECT_DIR$/evaluate.py" />
         <option value="$PROJECT_DIR$/untagged/485.txt" />
-        <option value="$PROJECT_DIR$/evaluator.py" />
         <option value="$PROJECT_DIR$/All Topics" />
         <option value="$PROJECT_DIR$/Selected Topics" />
+        <option value="$PROJECT_DIR$/CS Topics" />
+        <option value="$PROJECT_DIR$/evaluator.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -179,11 +185,6 @@
             <path>
               <item name="NLP" type="b2602c69:ProjectViewProjectNode" />
               <item name="NLP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NLP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NLP" type="462c0819:PsiDirectoryNode" />
-              <item name="test_tagged" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -220,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.evaluator (1)">
     <configuration name="evaluator (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NLP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -340,8 +341,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.evaluator (1)" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.evaluator" />
         <item itemvalue="Python.merge" />
         <item itemvalue="Python.mainm" />
@@ -387,7 +388,21 @@
       <option name="project" value="LOCAL" />
       <updated>1544292267467</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ontology done">
+      <created>1544401641646</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1544401641647</updated>
+    </task>
+    <task id="LOCAL-00006" summary="files with topics added">
+      <created>1544401684587</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1544401684587</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -402,12 +417,13 @@
   <component name="ToolWindowManager">
     <frame x="1440" y="23" width="1920" height="1057" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08945687" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08998935" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" weight="0.32953367" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32953367" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.07357513" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.56062174" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -438,21 +454,11 @@
     <MESSAGE value="sentence, paragraphs, time, speaker tags and cleaner code" />
     <MESSAGE value="all tags done, tagged folder added with all the tagged mails" />
     <MESSAGE value="all tags done and made a bit better. evaluator added. evaluation pretty good" />
-    <option name="LAST_COMMIT_MESSAGE" value="all tags done and made a bit better. evaluator added. evaluation pretty good" />
+    <MESSAGE value="ontology done" />
+    <MESSAGE value="files with topics added" />
+    <option name="LAST_COMMIT_MESSAGE" value="files with topics added" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/untagged/485.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tagged/485.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tagged/328.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tagged/316.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tagged/395.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -513,16 +519,6 @@
     <entry file="file://$PROJECT_DIR$/tagged/313.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/training/26.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -568,18 +564,6 @@
     <entry file="file://$PROJECT_DIR$/training/274.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/All Topics">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1640" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Selected Topics">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_tagged/459.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-115" />
@@ -609,28 +593,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_tagged/331.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244" />
+        <state relative-caret-position="-139" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/All Topics">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="39" lean-forward="true" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Selected Topics">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tagged/316.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tagged/308.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untagged/309.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CS Topics">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="91" selection-start-line="2" selection-start-column="91" selection-end-line="2" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-460">
+          <caret line="91" column="55" selection-start-line="91" selection-start-column="55" selection-end-line="91" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5880">
-          <caret line="392" column="68" selection-start-line="392" selection-start-column="68" selection-end-line="392" selection-end-column="68" />
+        <state relative-caret-position="892">
+          <caret line="380" column="28" selection-start-line="380" selection-start-column="28" selection-end-line="380" selection-end-column="28" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1544401413113" expanded="true" signature="518:523" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="1261:1266" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="2338:2339" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="2437:2442" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="3404:4546" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="4544:4546" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="4593:5016" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="5074:5246" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="6154:6155" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="6878:6967" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="7767:7977" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="8109:8110" ph="..." />
-            <marker date="1544401413113" expanded="true" signature="8638:11879" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="461:466" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="1204:1209" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="2281:2282" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="2380:2385" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="3733:5253" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="5251:5253" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="5300:5723" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="5781:5953" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="6861:6862" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="7585:7674" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="8474:8684" ph="..." />
+            <marker date="1544460107388" expanded="true" signature="8816:8817" ph="..." />
           </folding>
         </state>
       </provider>
